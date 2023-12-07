@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三元运算符</title>
+</head>
+<body>
+    
+
+    <script>
+        let a = '10';
+        if(a>=0 && a<=20){
+            if(a%2===0){
+                console.log(2);
+            }
+        }
+        else{
+            a-=2;
+        }
+
+        //此时a==10，a++ => 10 + 1 => 11
+        // but  a+=1 => '10'+1 => '101'
+        a==10?a++:a--;
+    </script>
+</body>
+</html>

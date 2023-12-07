@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hover显示详情</title>
+    <!-- import css -->
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        .box{
+            /* css3新盒子模型属性，控制width/height是盒子最终的宽高 */
+            box-sizing: border-box;
+            width: 200px;
+            height: 40px;
+            border: 1px solid red;
+
+            margin: 20px auto;
+
+            text-align: center;
+            line-height: 40px;
+
+            position: relative;
+            /* z-index: 10; */
+        }
+
+        .box .detail{
+            box-sizing: border-box;
+            width: 500px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border: 1px solid lightcoral;
+
+            /* 将detail定位到紧贴购物车下面 */
+            position: absolute;
+            right: -1px;
+            top: 38px;
+
+        
+            display: none;
+        }
+
+       
+        .box:hover .detail{
+            display: block;
+                /* 单独把detail的层级调低，这样父亲的边框就会压着它 */
+                z-index: -1;
+            
+            
+        }
+        .box:hover{
+            border-bottom-color: white;
+    
+        }
+
+        /* 如果是点击显示，不希要基于js也可以，可以基于:target 实现手风琴效果 */
+    </style>
+</head>
+<body>
+    
+    <!-- 基于css实现，我们需要让详情区域事按钮的子元素 -->
+    <div class="box">
+        <span>
+            shopping cart
+        </span>
+        <div class="detail">
+            购物车的相关信息
+        </div>
+    </div>
+
+</body>
+</html>

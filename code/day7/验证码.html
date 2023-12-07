@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+</head>
+<body>
+    
+    <input type="text" name="" id="codeInput">
+    <br>
+    <span style="font-size:30px;" id="codeText">abcd</span>
+    <button  style="font-size:15px;" id="changeBtn">change code</button>
+
+
+    <!-- import js -->
+    <script>
+
+
+        /**
+         * queryCode: 获取到四位随机的验证码,然后放到指定的盒子中
+         *      @params
+         *      @return
+         */
+        function queryCode (){
+
+                let codeInput = document.getElementById('codeInput');
+                let codeText = document.getElementById('codeText');
+                let changeBtn = document.getElementById('changeBtn');
+
+
+
+            // 准备获取范围的字符串
+            let str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            let res = '';
+            //循环四次获得随机的组合
+            for(let i = 0; i<4; i++){
+                //每一次循环都获取一个随机的数字索引
+                let ran = Math.round(Math.random()*str.length);
+                // 再根据索引找到对应字符，拼接到result
+                res = res + str.charAt(ran);
+            }
+
+            console.log('res: '+res);
+
+
+            //把得到的result字符放到盒子里
+            codeText.innerHTML = res;
+
+            return res;
+           
+        }
+         
+        // 执行函数，每次页面一刷新就会执行
+        queryCode();
+
+        // 点击看不清按钮，需要重新执行方法生成新的验证码
+        changeBtn.onclick = function(){
+            queryCode();
+        }
+
+
+        // 文本框失去焦点的时候：验证用户输入与验证码是否相同
+        //                      如果不同重新生成代码
+        codeInput.onblur = function(){
+            // 获取用户和验证码内容，（表单元素.value/ 非表单元素.innerHTML 获取内容
+            let input = codeInput.value;
+            let code = codeText.innerHTML;
+
+            // 不区分大小写验证 
+            if(input.toLowerCase()===code.toLowerCase()){
+                alert('correct');
+            }
+            else{
+                alert('incorrect');
+                codeInput.value = '';
+            }
+        }
+
+
+
+    </script>
+
+</body>
+</html>

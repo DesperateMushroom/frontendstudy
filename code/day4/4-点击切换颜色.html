@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="background-color: white;">
+    <button type="button" id="btn">clickme</button>
+    <script>
+        let body = document.body;
+        let btn = document.getElementById('btn');
+        console.log(body.style.backgroundColor);
+        let b = ['red','green','blue','black','white','#888','rgb(194,109,109)'];
+        let i = 0;
+        //获取当前的背景颜色 元素.style.xxx只能获取行内样式
+        // 颜色在样式中使用16斤脂肪是，js中获取到的是rgb的值
+
+        btn.onclick = function(){
+            i=i%b.length;
+            body.style.backgroundColor = b[i];
+            i++;
+        }
+    </script>
+    
+</body>
+</html>

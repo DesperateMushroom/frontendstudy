@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扩展思考</title>
+    <style>
+        #box{
+            box-sizing: border-box;
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+
+        .AA{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        
+    </div>
+
+    <!-- import js -->
+    <script>
+        let box = document.getElementById('box');
+      
+        //通过方法获取的元素是对象数据类型的值
+        console.log(typeof box); //=> 'object';
+        // 所以box也是由多组键值对组成的
+
+        //dir:可以看出一个对象的详细信息
+        /**
+         *  id: 操作元素的id值
+         *  className：操作元素的class样式类的值
+         *  innerHTML：操作元素的内容（可以识别标签
+         *  innerText：和innerHTML的区别：不能识别标签
+         *  style: 操作元素的行内样式
+         *  tagName：获取元素的标签名（一般大写） div span h1-h6...
+         * 
+         */
+        console.dir(box);
+
+        //box['onclick'] = function(){}
+        // box['style']s
+
+        //className可以设置元素的class
+        box.className = 'AA';
+
+        //innerHTML: 设置元素里的字
+        box.innerHTML = 'aoao';
+
+        //style: 操作元素的行内样式 
+        //属性值是一个新的对象CSSStyleDeclaration 
+        //所以我们可以链式  box.style.display
+        //修改的是堆内存中的值（只要堆内存中的值被修改，浏览器会基于DOM映射机制把页面中的元素进行重新渲染
+        
+        
+        
+    </script>
+</body>
+</html>

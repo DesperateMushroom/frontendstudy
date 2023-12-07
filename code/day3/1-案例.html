@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例练习</title>
+    <style>
+        #numInput,
+        #btn{
+            box-sizing: border-box;
+            height: 35px;
+            padding: 0 15px;
+            border: 1px solid red;
+        }
+
+        #btn:hover{
+            box-shadow: 0 0 10px black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="numInput">
+    <button type="submit" id="btn">submit</button>
+
+    <!-- import js -->
+    <script>
+        //想操作谁就先获得谁
+        let numInput = document.getElementById('numInput');
+        let btn = document.getElementById('btn');
+
+
+        //事件绑定
+        //点击submit就获取信息并处理
+        btn.onclick = function(){
+            //1. 获取文本框中的信息
+            // 从文本框中获取的信息是string类型的
+            let n = numInput.value;
+            // console.log( "n: "+n);
+            // console.log("type of n: "+typeof n);
+
+
+            //转换为数字
+            n = Number(n);
+
+            //2. 验证是否为有效数字
+            if(!isNaN(n)){
+                //有效数字
+                
+                if(n>0){
+                    //正数
+                    numInput.value = 'positive number';
+                }
+                else if(n<0){
+                    //负数
+                    numInput.value = 'negative number';
+                }
+                else{
+                    numInput.value = 'zero';
+                }
+                
+
+
+            }
+           else{
+               //非有效数字
+                numInput.value = 'not a number';
+           }
+
+            
+        }
+
+    </script>
+</body>
+</html>

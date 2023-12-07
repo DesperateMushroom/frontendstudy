@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    workage: <input type="number" name="" id="workage">
+    salary: <input type="number" name="" id="salary">
+    <button type="submit" id="btn">submit</button>
+    your bonus: $<span id="bonus"></span>
+
+
+    <script>
+        let workage = document.getElementById('workage');
+        let salary = document.getElementById('salary');
+        let btn = document.getElementById('btn');
+        let bonus = document.getElementById('bonus');
+
+        btn.onclick = function(){
+            // 1. 获取文本框中的信息 
+            //文本框.value 获取文本框中的内容. 格式是字符串
+            let years = Number(workage.value);
+            console.log('year:'+years);
+
+            let sal = Number(salary.value);
+            console.log('salary:'+sal);
+
+            if(isNaN(years)||isNaN(sal)||years<0||sal<0){
+                alert('wrong input');
+                return;
+            }
+
+            // 2. 经过逻辑处理，计算出结果
+
+            // 3. 把结果赋值给bonus
+            bonus.innerHTML = 2222;
+        }
+    </script>
+</body>
+</html>

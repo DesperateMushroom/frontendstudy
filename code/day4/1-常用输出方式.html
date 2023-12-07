@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器中常用的输出方式</title>
+</head>
+<body>
+    <script>
+        let a = 10;
+        let b = [{ 
+            id:1,
+            name:'aoao'
+        },
+        {
+            id:2,
+            name: 'sushi'
+        }];
+        
+        /*
+        [12,13]  一维数组
+        [12,{name:'xxx'}] 二维数组
+        [12,[{name:'xxx'},{name:'yyy'}]] 三位数组
+        */
+
+        // 1. console.log/dir/table ...  在控制台输出
+        // .dir: 输出一个对象的详细键值对信息
+        // .table 把一个多维json数组在控制台按照表格的方式呈现出来
+    /*    console.log(a);
+        console.dir(document.body);
+        console.table(b);*/
+
+        // 2.浏览器窗口弹窗 alert / confirm / prompt
+        // => 三种方式输出的结果都必先经过toString转换为字符串
+    //    alert([10,11,12]); // => '10,11,12'
+
+        // => 三种方式会阻断js 代码执行，只有当窗口关掉，js才会继续运行
+     /*   for(let i = 0; i<4; i++){
+            alert(i);
+            console.log('ee');
+        }*/
+
+
+        // 确定和取消：选择型弹窗
+        confirm('r u sure?');
+
+        // 在 condirm的基础上多了另一个输入框
+        prompt('r u sure? write ur info');
+
+
+        //3. document.write: 在页面中写入信息
+        // 基本不用了，输出的结果都是字符串
+        //document.write('eee');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <script>
+
+        // 不足十位补零
+        let addZero = val =>{
+            val = Number(val);
+            return val<10?'0'+val:val;
+        }
+
+        /**
+         * formatTime：将时间字符串转为想要的格式
+         *  基于字符串处理
+         */
+        //1. 获取年月日等信息，全部拆开放入一个数组中
+        // 2. 拼接成自己想用的格式
+
+
+        //===========================================
+
+        /**
+         * 基于日期对象处理
+         * 
+         */ 
+   /*      function formatTime(time){
+            //1.把时间字符串变为标准日期对象
+            time = time.replace(/-/g,'/');
+            time = new Date(time);
+            //2.基于方法获取年月日等信息
+            //get year month date day hr min sec
+
+            //3.返回想要的结果
+        } */
+
+
+        /**
+         * 封装一套公共的时间字符串格式化处理的方式 
+         */ 
+        String.prototype.formatTime = function formatTime(template){
+            typeof template === 'undefined'?template='{0}年{1}月{2}日 {3}:{4}:{5}' :null;
+            // this: 我们要处理的字符串
+            // 获取日期字符串总的数字信息
+            let ary = this.match(/\d+/g); //拿到所有的年月日时分秒
+
+            // 模板和数据的渲染 引擎机制
+            template = template.replace(/\{(\d+)}/g, (x,y)=>{
+                let val = ary[y] || '00';
+                val.length<2?val='0'+val:null;
+                return val;
+            });
+
+            return template;
+        }
+
+        let time = '2020-3-2';
+        console.log(time.formatTime('{1}-{2} {3}:{4}'));
+         
+    </script>
+</body>
+</html>

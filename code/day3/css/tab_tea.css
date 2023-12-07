@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+#tabBox{
+    width: 500px;
+    margin: 20px auto;
+}
+
+#navBox{
+    /* 只要把容器设置为flex布局，里面的定位元素默认在主轴水平靠左排列 */
+    display: flex;
+}
+
+#navBox{
+    position: relative;
+    top: 1px;
+}
+
+#navBox li{
+    box-sizing: border-box;
+    padding: 0 10px;
+    line-height: 35px;
+    border: 1px solid #999;
+    margin-right: 10px;
+    text-align: center;
+
+}
+
+#tabBox>div{
+    padding: 10px;
+    height: 150px;
+    border: 1px solid #999;
+    text-align: center;
+    width: 500px;
+    display: none;
+}
+
+#navBox li.active{
+    border-bottom-color: white;
+}
+
+#tabBox>div.active{
+    display:block;
+}

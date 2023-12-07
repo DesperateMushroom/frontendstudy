@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色</title>
+    <!-- import css -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+
+        #newsBox{
+            box-sizing: border-box;
+            width: 300px;
+            padding: 20px;
+            border: 2px solid black;
+            margin:  20px auto;
+        }
+
+        #newsBox li{
+            line-height: 40px;
+            border-bottom: 1px red dotted;
+        }
+
+        #newsBox li:last-child{
+            border-bottom: 0;
+        }
+
+        /* 基于css实现隔行变色 */
+        /* #newsBox li:nth-child(even){
+            background-color: pink;
+        }
+        #newsBox li:hover{
+            background-color: red;
+        } */
+    </style>
+</head>
+
+<body>
+    
+    <!-- ul#newsBox>li*5{我是第$个LI} -->
+    <ul id="newsBox">
+        <li>我是第1个LI</li>
+        <li>我是第2个LI</li>
+        <li>我是第3个LI</li>
+        <li>我是第4个LI</li>
+        <li>我是第5个LI</li>
+    </ul>
+
+
+    <!-- import js -->
+    <script>
+        //获取ul
+        let newsBox = document.getElementById('newsBox');
+        //获取ul下的li
+        //[context].getElementByTagName([tagname])：在指定的context范围之内，
+        //通过标签名获取一组元素（元素集合-HTMLCollection
+        //集合和数组很相似，也是数字索引作为属性名，有length属性存储长度，但不是
+        //数组，属于“类数组”
+        let newsList = newsBox.getElementsByTagName('li');
+
+        //类数组
+        console.log(newsList);
+
+        for(let i = 0; i<newsList.length; i++){
+
+            let curList = newsList[i];
+
+
+
+            curList.onmousemove = function(){
+                if(i%2===0){
+                    //this: 当前操作的这个li
+                    
+                    this.style.backgroundColor='pink';
+                }
+                else{
+                    curList.style.backgroundColor='skyblue';
+                }
+            }
+
+            curList.onmouseout=function(){
+                curList.style.backgroundColor='white';
+            }
+          
+        }
+
+        
+    </script>
+</body>
+</html>

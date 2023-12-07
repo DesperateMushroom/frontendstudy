@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小时钟</title>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #clockBox{
+            position: absolute;
+            right: 0;
+            top: 0;
+
+            line-height: 30px;
+            font-size: 30px;
+            color: white;
+            text-shadow: 0 0 2px black;
+
+            /* 设置背景渐变色 */
+            background: linear-gradient(pink, skyblue, purple);
+        }
+    </style>
+</head>
+<body>
+    <div id="clockBox">Tue Nov 28 2023 15:17:33</div>
+
+    <script>
+        let clockBox = document.getElementById('clockBox');
+        /**
+         * queryDate: 获取当前的日期，把其转换为想要的格式
+         *      @params
+         *      @return
+         * 
+         */
+            function queryDate(){
+                // 1.获取当前日期及详细信息
+                let time = new Date();
+                let year = time.getFullYear(),
+                    month = time.getMonth()+1,
+                    date = time.getDate(),
+                    day = time.getDay();
+
+                // 2.拼接成我们想要的字符串
+                let weekAry = ['sun','mon','tue','wed','thur','fri','sat'];
+                let res = weekAry[day] +" " + month+" "+date +" "+year;
+                
+                
+                let hr = time.getHours(),
+                    min = time.getMinutes();
+                
+                res = res + " "+hr+":"+min;
+
+                clockBox.innerHTML = res;
+
+
+            }
+
+            // 加载页面执行方法
+            queryDate();
+
+            // 想让其每一秒都更新，需要加一个
+            // 定时器控制运动
+            // setInterval 设置一个定时器，到达指定时间干什么事情
+            // 每隔1000ms执行queryDate
+            setInterval(queryDate, 60000);
+
+
+
+    </script>
+</body>
+</html>

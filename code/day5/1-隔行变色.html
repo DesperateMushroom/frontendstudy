@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button value="btn1">btn1</button:va>
+    <button value="btn2">btn2</button:va>
+    <button value="btn3">btn3</button:va>
+    <button value="btn4">btn4</button:va>
+    <button value="btn5">btn5</button:va>
+
+    <script>
+        /*
+            自定义属性编程思想：
+                前期把一些值存储到元素的自定义属性上，后期需要用到的时候
+                直接从属性上获取这些值
+        
+        */
+       let btns = document.getElementsByTagName('button');
+        
+        for(let i = 0; i<btns.length; i++){
+            btns[i].onclick = function(){
+                console.log('btn clicked: '+i);
+            }
+        }
+
+    </script>
+</body>
+</html>

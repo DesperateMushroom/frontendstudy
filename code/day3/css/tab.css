@@ -1,0 +1,98 @@
+
+#news{
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+#news li, #news li a{
+    text-decoration: none;
+    list-style: none;
+    color: balck;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+#news li:nth-child(even){
+    background-color: pink;
+    padding: 10px 0;
+}
+
+#news li:nth-child(odd){
+    padding: 10px 0;
+}
+
+#news li:hover{
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.box ul{
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+    position: relative;
+}
+
+.box li{
+    list-style: none;
+    float: left;
+    
+}
+
+.box li div:first-child{
+    height: 30px;
+    width: 50px;
+    border: 1px #888 solid;
+    line-height: 30px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.box li div:last-child{
+    height: 150px;
+    width: 800px;
+    border: 1px #888 solid;
+    line-height: 150px;
+    text-align: center;
+
+    position: absolute;
+    top: 31px;
+    left: 40px;
+
+    display:none;
+    z-index: -1;
+}
+
+/* 用行内class=active 来控制显示*/
+/* #navBox li:first-child div:last-child{
+    display: block;
+    
+}
+
+
+.box li:first-child div:first-child{
+    border-bottom-color:white;
+} */
+
+.box li div.active1{
+    border-bottom-color:white;
+}
+
+.box li div.active2{
+    display: block;
+}
+
+
+/* .box li:hover div:last-child{
+    display: block;
+}
+
+.box li:hover div:first-child{
+    border-bottom-color:white;
+    z-index: 10px;
+} */
+
+
+
+

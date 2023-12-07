@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        .box{
+            /* css3新盒子模型属性，控制width/height是盒子最终的宽高 */
+            box-sizing: border-box;
+            width: 200px;
+            height: 40px;
+            border: 1px solid red;
+
+            margin: 20px auto;
+
+            text-align: center;
+            line-height: 40px;
+
+            position: relative;
+            /* z-index: 10; */
+
+            cursor: pointer;
+        }
+
+        .box .detail{
+            box-sizing: border-box;
+            width: 500px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border: 1px solid lightcoral;
+
+            /* 将detail定位到紧贴购物车下面 */
+            position: absolute;
+            right: -1px;
+            top: 38px;
+
+        
+            display: none;
+        }
+
+   </style>
+</head>
+<body>
+
+    <!-- 获取元素，可以通过id获取 -->
+    <div class="box" id="box" >
+        <span>
+            shopping cart
+        </span>
+        <div class="detail" id="detail">
+            购物车的相关信息
+        </div>
+    </div>
+<!-- 
+    传统基于操作DOM方式实现业务需求
+        1. 想操作谁就先获取谁
+        2. 给某元素绑定某事件
+        3. 在事件触发的时候修改元素的样式
+ -->
+
+
+ <!-- import js -->
+
+ <script>
+    //DOM
+    //document.getElementById([id]) : 在整个文档中，通过元素的id获取到当前这个元素对象
+    //第一步
+    let box = document.getElementById('box');
+    let detail = document.getElementById('detail');
+
+
+    //第二步
+    //给box这个元素绑定事件
+    // 元素对象.onxxxx = function(){}: 事件绑定，xxx事件类型（click，mouseover，mousedown，keydown。。。）
+    //onclick不用大写
+    box.onclick=function(){
+
+            //第三步：
+            //元素对象.style.xxx=xxx: 修改元素的某一个样式值
+            //操作的是元素的行内样式
+            
+            //如果我们没有把样式写在行内上，在js中基于.style.xxx的方式是无法获取到样式的
+            
+        /* 这样写是错的
+            没获取到内部样式，直接走了else，然后给这个元素上了一个block的行内样式
+            然后继续走if
+            
+           console.log(detail.style.display);
+        if(detail.style.display==='block'){
+            detail.style.display='none';
+            box.style.borderBottomColor='red';
+        }
+        else{
+            detail.style.display='block';
+            box.style.borderBottomColor='white';
+            detail.style.zIndex=-1;
+        }
+        */
+
+        //正确写法
+        //现在其行内style 写上display='block'，再判断
+    }
+
+
+
+
+ </script>
+
+
+</body>
+</html>
