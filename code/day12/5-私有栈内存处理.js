@@ -49,14 +49,53 @@ function sum(a){
 
 
 // ======================练习3==========================
-var ary = [12,23];
+/* var ary = [12,23];
 function fn(ary){
     // 在这里操作的ary都是fn私有的
-    console.log(ary);
+    console.log(ary); // 12 23
     ary[0] = 100;
     ary = [100];
     ary[0] = 0;
-    console.log(ary);
+    console.log(ary); // 0
 }
 fn(ary);
-console.log(ary);
+console.log(ary); //100 23 */
+
+
+
+
+// ======================练习4==========================
+/* var n = 1;
+function fn(){
+    var n = 2;
+    function f(){
+        n--;
+        console.log(n);
+    }
+
+    f();
+    return f;
+}
+var x = fn(); // 1
+x(); // 0
+console.log(n);// 1 */
+
+
+// ======================练习5==========================
+var i = 5;
+function fn(i){
+
+    // 这个返回的函数被其他变量指向的时候，fn作用域不会被销毁。
+    // 如果被销毁就找不到了，所以不能被销毁
+    return function(n){
+        console.log(n + (++i));
+    }
+
+}
+
+var f = fn(1);
+f(2); // 4
+fn(3)(4); // 8
+fn(5)(6); // 12
+f(7); // 10
+console.log(i); // 5 
