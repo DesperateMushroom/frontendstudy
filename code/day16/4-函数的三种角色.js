@@ -151,5 +151,7 @@ new Foo.getName();// 2
 
 // 首先new Foo() 创造一个实例
 // 实例.getName() 执行
-new Foo().getName(); // 1
-new new Foo().getName();
+new Foo().getName(); // 3
+
+
+new new Foo().getName(); //3
