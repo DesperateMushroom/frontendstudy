@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 商城排序demo </title>
+    <!-- import css -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- bootstrap 中减一所有内容都放在container容器中 -->
+    <div class="container">
+        <!-- 导航navbar -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="javascript:;">商城排序</a>
+              
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+
+                    <!-- data-sort记录的是每个按钮应该按照哪个维度进行排序 -->
+                  <li class="nav-item" data-sort="data-time">
+                    <a class="nav-link active" aria-current="page" href="javascript:;">上架时间</a>
+                  </li>
+                  <li class="nav-item" data-sort="data-price">
+                    <a class="nav-link" href="javascript:;">价格</a>
+                  </li>
+                  <li class="nav-item" data-sort="data-hot">
+                    <a class="nav-link" href="javascript:;">热度</a>
+                  </li>
+              
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <!-- card list 商品列表 -->
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- <div class="col">
+              <div class="card h-100">
+                <img src="imgs/01.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title">HUAWEI Mate 10 4GB+64GB</h4>
+                  <p class="card-text"> $ 400 </p>
+                  <p class="card-text"> 好评: 100000</p>
+                  <p class="card-text"></p>  <small class="text-body-secondary">
+                   上架时间: 2020-10-14</small></p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
+                </div>
+              </div>
+            </div>
+     
+            <div class="col">
+                <div class="card h-100">
+                  <img src="imgs/01.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h4 class="card-title">HUAWEI Mate 10 4GB+64GB</h4>
+                    <p class="card-text"> $ 400 </p>
+                    <p class="card-text"> 好评: 100000</p>
+                    <p class="card-text"></p>  <small class="text-body-secondary">
+                     上架时间: 2020-10-14</small></p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">Last updated 3 mins ago</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card h-100">
+                  <img src="imgs/01.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h4 class="card-title">HUAWEI Mate 10 4GB+64GB</h4>
+                    <p class="card-text"> $ 400 </p>
+                    <p class="card-text"> 好评: 100000</p>
+                    <p class="card-text"></p>  <small class="text-body-secondary">
+                     上架时间: 2020-10-14</small></p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">Last updated 3 mins ago</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card h-100">
+                  <img src="imgs/01.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h4 class="card-title">HUAWEI Mate 10 4GB+64GB</h4>
+                    <p class="card-text"> $ 400 </p>
+                    <p class="card-text"> 好评: 100000</p>
+                    <p class="card-text"></p>  <small class="text-body-secondary">
+                     上架时间: 2020-10-14</small></p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">Last updated 3 mins ago</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card h-100">
+                  <img src="imgs/01.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h4 class="card-title">HUAWEI Mate 10 4GB+64GB</h4>
+                    <p class="card-text"> $ 400 </p>
+                    <p class="card-text"> 好评: 100000</p>
+                    <p class="card-text"></p>  <small class="text-body-secondary">
+                     上架时间: 2020-10-14</small></p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">Last updated 3 mins ago</small>
+                  </div>
+                </div> -->
+              </div>
+          
+    </div>
+
+
+
+    <!-- import js -->
+    <script src="js/index.js"></script>
+</body>
+</html>
