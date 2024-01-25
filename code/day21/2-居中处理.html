@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS盒子模型属性-居中处理</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body{
+            height: 100%;
+        }
+
+        .box{
+            box-sizing: border-box;
+            /* margin: 20px auto; */
+            padding: 15px;
+            width: 300px;
+            height: 300px;
+            border: 10px solid lightblue;
+            background-color: lightcyan;
+
+            font-size: 18px;
+            line-height: 30px;
+        }
+
+        /* 居中：定位 */
+        .box{
+            /* position: absolute; */
+            /* 让其左上角 在屏幕的一半 */
+            /* top: 50%;
+            left: 50%; */
+
+            /* 方法1.1 */
+            /* 再让其往左往上挪盒子宽高的一半 */
+            /* margin-top: -150px;
+            margin-left: -150px; */
+
+            /* 方法1.2 */
+            /* 用css3变形属性中的位移，不知道盒子宽高的情况下也能实现效果 */
+            /* transform: translate(-50%, -50%); */
+
+            /* 方法二：定位上下左右都为0  */
+            /* 
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            margin:auto; */
+
+        }
+        
+        
+        /* 方法三: 伸缩盒模型 */
+        /* body{ */
+            /* display: flex; */
+            /* 1.1 */
+            /* 设置元素在flex容器主轴和交叉轴方向上的对齐方式：center居中对齐 */
+            /* justify-content: center; */
+            /* align-items: center; */
+        /* } */
+
+        /* 
+        .box{
+            方法三1.2
+            margin: auto;
+        } */
+
+    </style>
+</head>
+<body>
+
+    <div id="box" class="box">
+        夫君子之行，静以修身，俭以养德。非淡泊无以明志，非宁静无以致远。夫学须静也，才须学也，
+        非学无以广才，非志无以成学。淫慢则不能励精，险躁则不能治性。年与时驰，意与日去，遂成枯落，多不接世，
+        悲守穷庐，将复何及！
+
+    </div>
+
+
+    <script>
+        // js实现居中
+        // （一屏幕的宽度 - 盒子的宽度）/2 === left
+        let winW = document.documentElement.clientWidth;
+        let winH = document.documentElement.clientHeight;
+        let box = document.getElementById('box');
+
+        box.style.position = 'absolute';
+        box.style.left = (winW - 300)/2 + 'px';
+        box.style.top = (winH - 300)/2 + 'px';
+
+
+
+
+    </script>
+    
+</body>
+</html>

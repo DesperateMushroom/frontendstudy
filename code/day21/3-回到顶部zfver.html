@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,body{
+            height: 400%;
+            /*css3中的背景颜色线性渐变*/
+            background: -webkit-linear-gradient(top left, lightblue, lightpink, lightyellow);
+        }
+
+      
+        .link{
+            /* 刚进来的时候不显示，等滚动条往下滚一定距离后再显示 */
+            /* 一屏半or两屏  看需求 */
+            display: none;
+            position: fixed;
+            right: 30px;
+            bottom: 230px;
+            box-sizing: border-box;
+            width: 100px;
+            height: 20px;
+            background-color: aliceblue;
+            color:black;
+            line-height: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+   
+    <a href="javascript:;" id="link" class="link">回到顶部</a>
+
+    <script>
+        let HTML = document.documentElement;
+        let LINK = document.getElementById('link');
+
+        // 1. 当浏览器滚动条滚动的时候，我们进行验证：
+        //    卷去的高度超过两屏，我们让#link显示
+        function check (){
+            // winH: 一屏幕高度
+            let winH = HTML.clientHeight;
+            // scrollT: 卷去的高度
+            scrollT = HTML.scrollTop;
+
+            LINK.style.display = scrollT>=winH*2?'block':'none';
+        }
+        window.onscroll = check;
+
+        // 2. 点击回到顶部
+        LINK.onclick = function(){
+
+            /* 让按钮隐藏 */
+            LINK.style.display = 'none';
+            // 先禁止滚动事件触发（因为再回到顶部的运动过程中，
+            //  如果时间一直在，会计算按钮显示隐藏的样式，无法让其隐藏）
+            window.onscroll = null; 
+
+            /* 实现动画 */
+            let step = 100;
+
+            // 渲染动画最好13~17ms
+            let timer = setInterval(()=>{
+                // 每一次获取最新的scrollTop值，再现有的基础上减去步长
+                // 让其走一步
+                let curT = HTML.scrollTop;
+                if(curT === 0){
+                    // 边界判断：已经回到顶部后，我们清除定时器
+                    clearInterval(timer);
+                    // 恢复滚动条滚动的监听事件
+                    window.onscroll = check; 
+                    return;
+                }
+                curT -= step;
+                HTML.scrollTop = curT;
+            } , 17)
+            
+
+        };
+
+        // 固定步长
+        // let timer = setInterval([Function], [Interval])
+        // 设置一个定时器，返回值timer代表这个定时器，
+        // 每间隔interval这么久，就会执行一次function
+        // 一直到手动清除定时器
+        // clearInterval(timer);
+    </script>
+</body>
+</html>

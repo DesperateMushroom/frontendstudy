@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,body{
+            height: 200%;
+            /*css3中的背景颜色线性渐变*/
+            background: -webkit-linear-gradient(top left, lightblue, lightpink, lightyellow);
+        }
+
+        button{
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" id="btn">
+        回到顶部
+    </button>
+
+    <script>
+
+        let backToTop = document.getElementById("btn");
+        backToTop.onclick = function(){
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>

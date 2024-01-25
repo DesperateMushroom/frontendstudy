@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS盒子模型属性</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .outer{
+            box-sizing: border-box;
+            margin: 20px auto;
+            width:500px;
+            height: 500px;
+            background: lightcoral;
+            border: 10px solid orangered;
+
+            position: relative;
+            /* float: left; */
+        }
+
+
+        .box{
+            box-sizing: border-box;
+            margin: 20px auto;
+            padding: 15px;
+            width: 300px;
+            height: 300px;
+            border: 10px solid lightblue;
+            background-color: lightcyan;
+
+            font-size: 18px;
+            line-height: 30px;
+            overflow: auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="outer" id="outer">
+        <div id="box" class="box">
+            夫君子之行，静以修身，俭以养德。非淡泊无以明志，非宁静无以致远。夫学须静也，才须学也，
+            非学无以广才，非志无以成学。淫慢则不能励精，险躁则不能治性。年与时驰，意与日去，遂成枯落，多不接世，
+            悲守穷庐，将复何及！
+    
+        </div>
+    </div>
+  
+
+    <script>
+        /**
+         * offset：获取当前元素距离body的左/上偏移（不论其父级参照物是谁）
+         *  @params: current Element
+         *  @return：[object] 包含上/左偏移的信息 -> {top:xxx, left:xxx}
+         */
+        function offset(curEle) {
+            let parent = curEle.offsetParent,
+                left = curEle.offsetLeft,
+                top = curEle.offsetTop;
+            
+            
+            // 存在父级参照物
+            while(parent){
+
+               
+
+                // 在原有的偏移的基础上累加：父参照物的边框，父参照物的偏移
+                if(/MSIE 8\.0/.test(navigator.userAgent)){
+                    // ie8中偏移值自己就算了边框了，不需要我们再加边框的值
+                    // navigator.userAgent 获取当前浏览器的版本信息
+                    left += parent.clientLeft;
+                    top += parent.clientTop;
+                }
+                left += parent.offsetLeft;
+                top += parent.offsetTop;
+
+                // 继续获取上级参照物
+                parent = parent.offsetParent;
+                
+            }
+
+            return {
+                'top': top,
+                'left':left
+            };
+        }
+        
+        let box = document.getElementById('box');
+        console.log(offset(box));
+
+
+    </script>
+    
+</body>
+</html>
