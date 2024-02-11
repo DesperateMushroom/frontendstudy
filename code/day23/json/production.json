@@ -1,0 +1,47 @@
+[
+    {
+        "id":1,
+        "title":"HUAWEI Mate 10 4GB+64GB",
+        "price":1000,
+        "time":"2020-01-10",
+        "hot":110,
+        "img":"imgs/01.png"
+        
+    },
+    {
+        "id":2,
+        "title":"HUAWEI Mate 20 4GB+64GB",
+        "price":200,
+        "time":"2020-01-02",
+        "hot":220,
+        "img":"imgs/01.png"
+        
+    },
+    {
+        "id":3,
+        "title":"HUAWEI Mate 30 4GB+64GB",
+        "price":300,
+        "time":"2020-01-08",
+        "hot":130,
+        "img":"imgs/01.png"
+        
+    },
+    {
+        "id":4,
+        "title":"HUAWEI Mate 40 4GB+64GB",
+        "price":30,
+        "time":"2020-01-05",
+        "hot":440,
+        "img":"imgs/01.png"
+        
+    },
+    {
+        "id":5,
+        "title":"HUAWEI Mate 50 4GB+64GB",
+        "price":50,
+        "time":"2020-01-06",
+        "hot":150,
+        "img":"imgs/01.png"
+        
+    }
+]

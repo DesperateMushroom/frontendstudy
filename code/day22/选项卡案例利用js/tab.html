@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡 </title>
+    <link rel="stylesheet" href="tab_tea.css">
+    <!-- <link rel="stylesheet" href="./css/tab.css"> -->
+    
+    <script>
+        // 在结构加载之前获取元素肯定获取不到，所以我们一般把js放到body末尾
+        // 就是为了等待结构加载完再获取元素
+
+        // 1. 如果不需要获取页面中的元素，放到哪里都可以
+        // 2. 就是想放到开头，还想获取元素，可以基于window.onload 或者 jq中的$(document).ready()来处理
+    </script>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+    <ul id="news">
+        <li><a href="#">aaaaaaaaaaaaaaa</a></li>
+        <li><a href="#">bbbbbbbbbbbbbbb</a></li>
+        <li><a href="#">ccccccccccccccc</a></li>
+        <li><a href="#">ddddddddddddddd</a></li>
+        <li><a href="#">eeeeeeeeeeeeeee</a></li>
+        <li><a href="#">fffffffffffffff</a></li>
+    </ul>
+
+    <!-- <div class="box">
+        <ul id="navBox">
+            <li>
+                <div class="active1">编程</div>
+                <div class="active2">编程使我快乐</div>
+            </li>
+            <li>
+                <div>读书</div>
+                <div>读书使我快乐</div>
+            </li>
+            <li>
+                <div>运动</div>
+                <div>运动使我快乐</div>
+            </li>
+        </ul>
+    </div> -->
+
+    <div id="tabBox">
+        <ul id="navBox">
+            <li class="active" >
+                编程
+                
+            </li>
+            <li>
+               读书
+                
+            </li>
+            <li>
+                运动
+               
+            </li>
+            
+        </ul>
+        <div class="active">编程使我快乐</div>
+            <div>读书使我快乐</div>
+            <div>运动使我快乐</div>
+    </div> 
+
+
+    <!-- <script src="./js/tab.js"></script> -->
+    <!-- <script src="js/tab_tea.js"></script> -->
+
+    <!-- <script>
+        /**
+         * $([function])
+         *      等待页面中所有的DOM结构加载完成才会执行这个方法
+         * 
+         *  全套写法
+         *  => $(document).ready([function])
+         * 
+         * 
+         *  window.onload = function(){}
+         *      等待页面中所有的资源（DOM结构，内容，其他的富媒体资源等
+         *      都加载完成才会执行函数
+         *      比上面的那个触发得慢
+         */
+
+        $(function(){
+            // 选项卡正常思路：给所有的li绑定点击事件
+            //               当点击某一个li的时候，让其选中样式，而其余的li都移除选中样式，
+            //               同时对应索引的div有选中样式，其余的div移除选中样式
+            let $tabBox = $('#tabBox'),
+                $navList = $tabBox.find('#navBox>li'), // => $('#tabBox>#navBox>li');  $('#navBox>li', $tabBox)
+                $divList = $tabBox.children('div');
+
+
+            // jq特性：内置循环处理机制（基于一个jq集合去操作某个方法，
+            // 我们无需循环每一项单独操作了，jq内部帮我们循环处理了
+            // 例如： $navList.css('color','#ccc'); 集合中有100项，
+            //       jq会把100项都设置了这个样式。无需自己循环处理
+            $navList.on('click',function(){
+                // -> this: 当前点击操作的元素 -> $(this)此能调取jq方法
+                // $(this).addClass('active');
+                // $(this).siblings.removeClass('active');
+                // jq特性：链式写法  同等于上面两句
+                let n = $(this).index();
+                $(this).addClass('active').siblings().removeClass('active');
+                // 根据点击li的索引，在div集合中找到对应的那一项，
+                // 然后这一项选中，其他兄弟像都移除选中
+                $divList.eq(n).addClass('active').siblings().removeClass('active');
+            });
+
+            console.log($navList);
+            console.log($divList);
+
+            /* // -> 基于jq中的each遍历集合中的每一项。绑定点击事件
+            $navList.each(function(index, $item){
+                // 参数顺序和内置的foreach方法是相反的   内置：item,index
+                // jq：index当前循环这一项的索引，
+                //     item当前循环的这一项
+                // this === item: 当前方法中的this也是循环的这一项
+
+                $item.on('click',function(){
+                    // 循环
+                });
+            })
+             */
+            // $navList.each((index, $item)=>{
+                // 这里不推荐使用箭头函数了
+                // this不再是循环的这项，箭头函数中没有this
+            // })
+        });
+
+
+
+    </script> -->
+
+    <script>
+        $('#tabBox>#navBox>li').click(function(){
+            let n = $(this).index();
+            $(this).addClass('active').siblings().removeClass('active')
+                .parent().nextAll('div').eq(n)
+                .addClass('active').siblings().removeClass('active');
+        });
+    </script>
+</body>
+</html>

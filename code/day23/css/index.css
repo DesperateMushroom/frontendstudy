@@ -1,0 +1,26 @@
+/* bootstrap中的样式不一定是最终自己想要的，那么我们就需要单独修改 
+    1. 如果自己改的样式不生效，很可能是权重优先级的问题
+        此时最简单的方法就是设置  !important  
+        这个权重瞬间变为最大
+
+
+*/
+
+.container{
+    padding:0; 
+}
+
+.g-4{
+    margin-top: 20px; 
+    justify-content: space-between;
+
+}
+
+.col {
+    flex: 0 0 300px;
+}
+
+.col .card-text {
+    font-size: 20px;
+    line-height: 20px;
+}
