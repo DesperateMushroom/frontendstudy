@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片的延迟加载</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .container:first-child{
+            margin-top: 300px;
+        }
+        .imgBox{
+            margin: 20px auto;
+            width: 800px;
+            height: 400px;
+            overflow: hidden;
+
+            background: #bbb;
+        }
+
+        .imgBox img {
+            width: 100%;
+            /* min-height: 100%; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <!-- <div class="imgBox">
+            <img src=""
+            alt="" data-img="https://i2.hdslb.com/bfs/archive/4d9d81c12716da8b602942786f9fe8dd0c8ef0cb.jpg@672w_378h_1c_!web-home-common-cover.avif">
+        </div> -->
+    </div>
+ 
+
+    <!-- import js -->
+    <script src="../day22/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="delayImg.js"></script>
+</body>
+</html>
