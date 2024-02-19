@@ -1,0 +1,60 @@
+html,
+body {
+	background: #D6D7DB;
+    overflow-x: hidden;
+}
+
+.container {
+	box-sizing: border-box;
+	margin: 20px auto;
+	width: 1000px;
+
+    /* 基于flex实现水平排列，里面的每一项都会保持相同的高度*/
+    /* 其中某一项变高，其余所有的项也都跟着变高*/
+	 /* display: flex; */ /*每一项都在主轴上*/
+	/* justify-content: space-between; */
+	/* align-items: flex-start;  */
+}
+
+.container .column {
+	box-sizing: border-box;
+	width: 320px;
+
+    margin-right: 20px;
+    float: left;
+}
+
+.container .column:last-child{
+    margin-right: 0px;
+}
+.container .column .item{
+    display: block; /*让其变成块级标签*/
+    /* width: 320px; */
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: whitesmoke;
+    box-shadow: 3px 3px 10px #000;
+}
+
+.container .column .item .imgBox{
+    /* height: 300px; 想要实现图片延迟加载，这块显示默认占位图，事先需要知道图片的高度 */
+    /* 高度从服务器里获取 */
+    background: url("../images//default.gif") no-repeat center center #eee;
+    overflow: hidden;
+}
+
+.container .column .item .imgBox img{
+    display: none;
+    width: 100%;
+}
+
+.container .column .item p{
+    margin-top: 10px;
+    font-size:12px;
+    color: #555;
+    line-height: 20px;
+}
+
+.container .column .item:hover{
+    box-shadow: 10px 10px 20px #000;
+}

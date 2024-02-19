@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的防抖和节流</title>
+    <!-- import css -->
+    <link rel="stylesheet" href="../day25-2/css/reset.min.css">
+    <style>
+        html,body{
+            height: 500%;
+            background: -webkit-linear-gradient(top left, lightblue, lightgreen, lightyellow,orange);
+        }
+    </style>
+</head>
+<body>
+    
+    <script src="node_modules/underscore/underscore.js"></script>
+    <script>
+        /**
+         * 函数的防抖(debounce): 不是某个事件触发就去执行函数
+         *                      而是在指定的时间间隔内，执行一次
+         *                      减少函数执行的次数
+         *  https://underscorejs.org/ 
+         *      js类库。提供很多项目中需要经常使用的方法，现在很少用了
+         * 
+         * 
+         * 函数的节流（throttle): 函数节流是为了缩减执行频率，
+         *                      当达到了一定的时间间隔就会执行一次
+         *                      但不像防抖一样，一定时间内只能执行一次
+         *                      而是一定时间内能执行多次
+         */ 
+
+         /**
+          * debounce: 函数的防抖
+          *     @param：
+          *         func：要执行的函数
+          *         wait：间隔等待时间
+          *         immediate：在开始边界还是结束边界触发执行（true：在开始边界
+          *     @return
+          *         可被调用的函数
+          */ 
+        function debounce(func, wait, immediate){
+            let result = null,
+                timeout = null;
+
+            // 返回一个可以被执行的函数
+            return function (...args){
+                let context = this,
+                    now = immediate && !timeout;
+                clearTimeout(timeout); //  在设置新的定时器之前，我们要把之前设置的定时器都干掉
+                                        // 因为防抖的目的是等待时间内，只执行一次
+                timeout = setTimeout(()=>{
+                    if(!immediate) result = func.call(context,...args);
+                    // clearTimeout(timeout);
+                    timeout=null;   
+                },wait);
+                // 只有当现在立马被执行且没有别的定时器的时候才触发
+                if(now){
+                    result = func.call(context,...args);
+                }
+            }
+        }
+
+
+        /**
+         * throttle: 函数节流是为了缩减执行频率，当达到了一定的时间间隔就会执行一次
+         *  @params
+         *      func: 需要执行的函数
+         *      wait: 设置的间隔时间
+         *  @return 
+         *      返回可被调用的函数
+         */ 
+        let throttle = function (func, wait){
+            let timeout = null,
+                result = null,
+                previous = 0; // 上次执行的时间点
+            
+            return function (...args){
+                let now = new Date,
+                    context = this;
+                
+                // remaining小于等于0，表示上次执行至此缩减个时间已经超过了一个时间间隔
+                let remaining = wait - (now-previous);
+                if(remaining<=0){
+                    clearTimeout(timeout);
+                    previous = now;
+                    timeout = null;
+                    result = func.apply(context, args);
+                }
+                else if(!timeout){
+                    timeout = setTimeout(()=>{
+                        previous = new Date;
+                        timeout = null;
+                        result = func.apply(context, args);
+                    },remaining);
+                }
+                return result;
+            };
+
+        };
+
+
+
+        // underscore内置方法
+      /*     function debounce(func, wait, immediate) {
+                var timeout, previous, args, result, context;
+
+                var later = function() {
+                var passed = now() - previous;
+                if (wait > passed) {
+                    timeout = setTimeout(later, wait - passed);
+                } else {
+                    timeout = null;
+                    if (!immediate) result = func.apply(context, args);
+                    // This check is needed because `func` can recursively invoke `debounced`.
+                    if (!timeout) args = context = null;
+                }
+                };
+
+                var debounced = restArguments(function(_args) {
+                context = this;
+                args = _args;
+                previous = now();
+                if (!timeout) {
+                    timeout = setTimeout(later, wait);
+                    if (immediate) result = func.apply(context, args);
+                }
+                return result;
+                });
+
+                debounced.cancel = function() {
+                clearTimeout(timeout);
+                timeout = args = context = null;
+                };
+
+                return debounced;
+            }
+*/
+
+
+
+/* function throttle(func, wait, options) {
+    var timeout, context, args, result;
+    var previous = 0;
+    if (!options) options = {};
+
+    var later = function() {
+      previous = options.leading === false ? 0 : now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+
+    var throttled = function() {
+      var _now = now();
+      if (!previous && options.leading === false) previous = _now;
+      var remaining = wait - (_now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = _now;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+      return result;
+    };
+
+    throttled.cancel = function() {
+      clearTimeout(timeout);
+      previous = 0;
+      timeout = context = args = null;
+    };
+
+    return throttled;
+  }
+
+ */
+        
+ 
+ 
+ let count = 0;
+        function fn(){
+            console.log(++count);
+        }
+        // true: 在开始边界就触发
+        let lazyFn = _.debounce(fn,1000);
+        window.onscroll = lazyFn;
+    </script>
+</body>
+</html>
