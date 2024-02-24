@@ -1,0 +1,5 @@
+/* linear:
+
+bounce:{
+    easeIn:
+} */

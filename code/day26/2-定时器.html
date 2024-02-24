@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-定时器</title>
+</head>
+<body>
+    
+
+    <script>
+        /**
+         * setTimeout
+         * setInterval
+         * 定时器的返回值是一个数字，代表当前是第几个定时器
+         *  + 我们后期可以基于clearTimeout / clearInterval清除定时器
+         *  + 手动把timer赋值为null，后期基于它的值验证是否存在定时器
+         * 
+         * 定时器是异步编程的
+         */ 
+       /*  let timer = null;
+        timer = setTimeout(()=>{
+            // 设置一个定时器后这个方法并没有立即被执行
+            // 到时间再执行
+            clearTimeout(timer);
+            timer = null;
+        },1000); */
+
+       /*  let n = 0;
+        setTimeout(()=>{
+            n++;
+            console.log(n);
+        },0); // 写0也不是立即执行，而是有一个最小的等待时间，10ms左右
+        n+=2;
+        console.log(n); */
+
+
+        // 定时器设置一个等待时间，到达时间后不一定执行
+        // 如果当前主线程被占用着，所有任务都要等主线程空闲下来
+        // 才能被安排执行=》 因为js是单线程的
+      /*   let n = 0;
+        setTimeout(()=>{
+            n++;
+            console.log(n);
+        },0); 
+        console.time('AA');
+        for(let i = 0;i<1000000;i++){}
+        console.timeEnd('AA');
+        n+=2;
+        console.log(n); */
+
+
+        /* let n = 0;
+        setTimeout(()=>{
+            n++;
+            console.log(n); // 没有执行，主线程被死循环给牵制住了
+        },0); 
+        n+=2;
+        console.log(n);
+        while(true){}  */
+
+        let n = 0;
+        setTimeout(()=>{
+            n++;
+            console.log(n);//6
+        },500); 
+        setTimeout(()=>{
+            n+=2;
+            console.log(n);//2
+        },50); 
+        for(let i = 0;i<100000000;i++){}
+        setTimeout(()=>{
+            n+=3;
+            console.log(n);//5
+        },20); 
+        console.log(n);//0
+
+
+        /* 浏览器是多线程的，但是它只分配了一个线程来供渲染代码自上而下执行 */
+        /* css js渲染时单线程的，所以代码大部分都是同步的，上一行代码执行完才能执行下一行 */
+        // 遇到导入文件，浏览器会分配一个新的线程区请求资源文件
+        // 等资源文件回来后，主线程再执行资源文件
+    </script>
+</body>
+</html>

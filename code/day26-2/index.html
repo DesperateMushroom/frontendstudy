@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图左右运动版</title>
+
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .container{
+            box-sizing: border-box;
+            margin: 0 auto;
+            width: 1100px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container .wrapper{
+            box-sizing: border-box;
+            width: 5500px; /*之前是4400px*/
+            height: 100%;
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* transition: 1s; */
+        }
+
+        /* 让元素排一排：1.父级变成伸缩模型； 2.变为行内样式但是记得清除中间的空*/
+        .container .wrapper .slider{
+            /* display: inline; */
+            box-sizing: border-box;
+            width: 1100px;
+            height: 100%;
+            /* font-size: 0px; */
+        }
+
+        /*分页器*/
+        .pagination{
+            position: absolute;
+            z-index: 999; /*让其层级比wrapper高*/
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0);
+            font-size: 0;
+        }
+
+        .pagination li{
+            display: inline-block;
+            margin: 0 10px;
+            width: 30px;
+            height: 6px;
+            border-radius: 3px;
+            background-color: #636060;
+            cursor: pointer;
+        }
+
+        .pagination li.active{
+            background-color: rgb(209, 201, 201);
+            
+        }
+
+        /* 左右按钮 */
+        .arrow{
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            z-index: 900;
+            font-size: 70px;
+            font-weight: bolder;
+            color: lavender;
+            background-color: rgba(133, 127, 127, 0.541);
+            text-align: center;
+            line-height: 50px;
+            display: none;
+        }
+
+        .changeLeft{
+            transform: translateY(50%);
+            bottom: 50%;
+        }
+
+
+        .changeRight{
+            transform: translateY(50%);
+            bottom: 50%;
+            right:0;
+        }
+
+        /* 鼠标划到container才显示箭头 */
+        .container:hover .arrow{
+            display: inline-block;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 轮播图容器 -->
+    <div class="container">
+
+        <!-- wrapper存放所有的图 -->
+        <div class="wrapper">
+            <!-- slider每一个轮播图 -->
+            <div class="slider">
+                <img src="images/banner1.jpg" alt="">
+            </div>
+            <div class="slider">
+                <img src="images/banner2.jpg" alt="">
+            </div>
+            <div class="slider">
+                <img src="images/banner3.jpg" alt="">
+            </div>
+            <div class="slider">
+                <img src="images/banner4.jpg" alt="">
+            </div>
+            <!-- 克隆的那份（无缝衔接） -->
+            <div class="slider">
+                <img src="images/banner1.jpg" alt="">
+            </div>
+        </div>
+    
+        <!-- pagination分页器 -->
+        <ul class="pagination">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    
+
+        <!-- 左右按钮 -->
+        <a href="javascript:;" class="arrow changeLeft"> &lt;</a>
+        <a href="javascript:;" class="arrow changeRight"> &gt;</a>
+    </div>
+
+
+    <!-- css3做法 -->
+    <!-- 在style中加了  transition: 1s; -->
+    <!-- <script>
+        // 获取wrapper
+        let wrapper = document.querySelector('.wrapper'),
+            wrapperWidth = wrapper.clientWidth,
+            step = 1100,
+            total = 0;
+            
+        console.log(wrapperWidth);
+
+        // 每三秒让wrapper往左移动1100px
+        let timer = setInterval(()=>{
+            total = total + step;
+            // 停止条件：total === wrapperWidth
+            if(total === wrapperWidth){
+                // total 归零，回到第一张图
+                wrapper.style.transform = `translateX(${-wrapperWidth})px`;
+                total = 0;
+            }
+
+            wrapper.style.transform = `translateX(${(-total)}px)`;
+            // console.log(wrapper.style.left);
+        },2000);
+
+    </script> -->
+
+
+    <!-- 老师jq -->
+    <script src="../day22/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/banner.js"></script>
+</body>
+</html>

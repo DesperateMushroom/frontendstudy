@@ -1,0 +1,6 @@
+- 基于jquery的animate方法实现
+    - 左右切换版
+- 基于jquery和css3动画结合实现
+    - 渐隐渐现版
+- 基于swiper插件实现
+- 封装成为jquery插件

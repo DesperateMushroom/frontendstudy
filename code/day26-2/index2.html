@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图左右运动swiper版</title>
+
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <!-- <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.js"> -->
+
+    <style>
+        /* 自己再弄样式 */
+        .swiper,
+        .swiper-slide,
+        .swiper-slide>img{
+            width: 1100px;
+            height: 397px;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 轮播图容器 -->
+    <div class="swiper">
+
+        <!-- wrapper存放所有的图 -->
+        <div class="swiper-wrapper">
+            <!-- <div class="swiper-slider">
+                <img src="images/banner4.jpg" alt="">
+            </div> -->
+            <!-- slider每一个轮播图 -->
+            <div class="swiper-slide">
+                <img src="images/banner1.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/banner2.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/banner3.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/banner4.jpg" alt="">
+            </div>
+            <!-- 克隆的那份（无缝衔接） -->
+            <!-- <div class="swiper-slider">
+                <img src="images/banner1.jpg" alt="">
+            </div> -->
+          
+        </div>
+    
+        <!-- pagination分页器 -->
+        <ul class="swiper-pagination">
+            <!-- <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li> -->
+        </ul>
+    
+
+        <!-- 左右按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+
+
+    <!-- 老师jq -->
+    <!-- <script src="../day22/node_modules/jquery/dist/jquery.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- <script src="node_modules/swiper/swiper-bundle.js"></script> -->
+    <script>
+        const swiper = new Swiper('.swiper', {
+            speed: 400,
+            spaceBetween: 100,
+            loop:true,
+            autoplay:{
+                delay:3000,
+                stopOnLastSlide: false,
+                disableOnInteraction: false,
+            },
+            // disableOnInteraction:false,
+            pagination:{
+                el:'.swiper-pagination',
+                type:'bullets'
+            },
+            effect:'cube',
+            navigation:{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            }
+        });
+    </script>
+</body>
+</html>
