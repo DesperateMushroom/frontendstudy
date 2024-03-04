@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>推盒子</title>
+    <link rel="stylesheet" href="../day26-2/css/reset.min.css">
+
+
+    <style>
+        html,body{
+            height:100%;
+        }
+
+        .container{
+            box-sizing: border-box;
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            margin: -200px 0 0 -200px;
+            width: 400px;
+            height: 400px;
+            background-color: lightblue;
+            transition: .3s;
+        }
+
+        .container .box{
+            box-sizing: border-box;
+            position:absolute;
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+
+
+    <script src="../day22/node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        let $container = $('.container'),
+            $box = $('.box');
+        $(document).on('keydown keypress',  function(ev){
+            let top = parseFloat($box.css('top')),
+                left = parseFloat($box.css('left')),
+                step = 5,
+                code = ev.keyCode;
+            // console.log(left);
+
+           
+
+            // 2. 根据键盘码计算移动的距离
+            switch(code){
+                case 37:
+                    left -= step;
+                    break;
+                case 38:
+                    top -= step;
+                    break;
+                case 39:
+                    left += step;
+                    break;
+                case 40:
+                    top += step;
+                    break;
+            }
+            
+             // 4. 边界判断
+             let minL = 0,
+                maxL = $container.width()-$box.width(),
+                minT = 0,
+                maxT = $container.height()-$box.height();
+            left = left<=minL?minL:left;
+            left = left>=maxL?maxL:left;
+            top = top<=minT?minT:top;
+            top = top>=maxT?maxT:top;
+
+            // 3. 把最新的样式重新赋值给盒子
+            $box.css({
+                left: left,
+                top:top
+            });
+
+
+            
+        });
+    </script>
+</body>
+</html>

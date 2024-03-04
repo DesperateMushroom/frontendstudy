@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day29-3</title>
+    <link rel="stylesheet" href="../day26-2/css/reset.min.css">
+
+    <style>
+        html,body{
+            height:100%;
+        }
+
+        #outer{
+            margin: 20px auto;
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+        }
+
+        #inner{
+            margin: 20px auto;
+            width: 200px;
+            height: 200px;
+            background-color: lightcoral;
+        }
+
+        #center{
+            margin: 20px auto;
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="outer">
+        <div id="inner">
+            <div id="center"></div>
+        </div>
+    </div>
+
+    <script>
+        // mouseenter, mouseleave 默认阻止了冒泡传播
+        // mouseover, mouseout 没有阻止
+
+        center.onmouseover = function(){
+            console.log('center onmouseover');
+        }
+        center.onmouseout = function(){
+            console.log('center onmouseout');
+        }
+        inner.onmouseover = function(){
+            console.log('inner onmouseover');
+        }
+        inner.onmouseout = function(){
+            console.log('inner onmouseout');
+        }
+
+/* 
+        center.onmouseenter = function(){
+            console.log('center onmouseenter');
+        }
+        center.onmouseleave = function(){
+            console.log('center onmouseleave');
+        }
+        inner.onmouseenter = function(){
+            console.log('inner onmouseenter');
+        }
+        inner.onmouseleave = function(){
+            console.log('inner onmouseleave');
+        } */
+    </script>
+
+    <!-- 
+        事件的传播机制：
+            捕获阶段：从最外层向最里层事件源依次进行查找（目的：为了冒泡阶段
+                    计算好传播的层级路径  CAPTURING_PHASE:1
+            目标阶段：当前元素的相关事件行为触发    AT_TARGET:2
+            冒泡传播：触发当前元素的某一个事件行为，不仅它的这个行为被触发了，
+                    而且它所有祖先元素（一直到window）相关的事件行为都会被依次触发
+                    从内到外的顺序  BUBBLING_PHASE:3 (Event.prototype)
+     -->
+    <script>
+        /* document.body.onclick = function(){console.log('body')}
+        outer.onclick = function(){console.log('outer')}
+        inner.onclick = function(){console.log('inner')}
+
+        center.onclick = function(ev){
+            
+            console.log('center');
+            // 阻止冒泡传播
+            ev.stopPropagation();
+            
+        } */
+
+       /*  outer.addEventListener('click',function(){
+            console.log('outer')
+            // true: 真实项目中没有这种需求
+        },true);
+        inner.addEventListener('click',function(){
+            console.log('inner')
+        },true);
+        outer.addEventListener('click',function(){
+            console.log('body')
+        },false); */
+    </script>
+</body>
+</html>

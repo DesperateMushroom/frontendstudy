@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图渐隐渐现</title>
+
+    <!-- import css -->
+    <link rel="stylesheet" href="../day26-2/css/reset.min.css">
+    <link rel="stylesheet" href="css/banner.css">
+</head>
+
+
+<!-- 
+    插件组件封装的一点思想
+        1. 基于面向对象的方式来处理
+         - 调取一次插件相当于创建插件的一个实例
+         - 这样私有的可以设置，公有的方法也可以设置
+        2. 我们要保证几个事情
+         - 灵活且功能强大（适配更多的应用场景）
+         - 容错性和可扩展性要强
+         - 追求机制的性能和优秀的代码管理方式
+         - 开源精神
+ -->
+<body>
+    
+
+    <!-- 思路：切换到哪一张，就让当前这一张的z-index:1 其余的z-index:0 -->
+    <!--       透明度从0->1 其余的透明度为0 -->
+
+    <section class="container">
+        <div class="wrapper">
+            <!-- <div class="slide">
+                <img src="../day26-2/images/banner1.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="../day26-2/images/banner2.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="../day26-2/images/banner3.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="../day26-2/images/banner4.jpg" alt="">
+            </div> -->
+        </div>
+
+        <!-- 分页器 -->
+        <div class="pagination">
+            <!-- <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span> -->
+        </div>
+
+        <!-- 左右箭头 -->
+        <a href="javascript:;" class="button-prev">&lt;</a>
+        <a href="javascript:;" class="button-next">&gt;</a>
+    </section>
+
+
+
+    <script src="../day22/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/banner-plugin.min.js"></script>
+    <script src="js/banner.js"></script>
+    <!-- 思路：切换到哪一张，就让当前这一张的z-index:1 其余的z-index:0 -->
+    <!--       透明度从0->1 其余的透明度为0 -->
+   
+   <!-- 我自己写的 -->
+    <!-- <script>
+        let $container = $('.container'),
+            $wrapper = $container.find('.wrapper'),
+            $slideList = $wrapper.find('.slide');
+        // console.log($slideList);
+        let step = 0,
+            total = $slideList.length;
+        // console.log(total);
+        function fading(){
+            let $pre = $($slideList.get(step));
+            step++;
+            step = step===4?0:step;
+            let $cur = $($slideList.get(step));
+            
+
+            $cur.stop().animate({
+                'z-index':2,
+                opacity:1
+            },800);
+
+            $pre.css('z-index',0).css('opacity',0);
+
+        }
+        let timer = setInterval(fading, 3000);
+    </script> -->
+</body>
+</html>

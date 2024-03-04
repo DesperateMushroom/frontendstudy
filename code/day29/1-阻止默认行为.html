@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-阻止默认行为</title>
+</head>
+<body>
+    
+    <!-- 
+        A标签的默认行为1：页面跳转 
+        A标签的默认行为2：锚点定位  在url后面加 '#id' 跳转
+
+    -->
+    <!-- <a href="https://www.google.com" target="_blank">谷歌</a> -->
+
+    <!-- 阻止它的默认行为
+        1. href = "javascript:;"
+        2. 点击A标签：先出发click行为，然后再去执行href的跳转
+    -->
+    <!-- <a href="https://www.google.com" id="link">我就是个按钮</a> -->
+
+
+
+    <!-- <a href="https://www.google.com" id="link">我就是个按钮</a>  -->
+
+<!--     <style>
+        .context{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            padding: 0 5px;
+            width: 100px;
+            border: 1px solid lightcoral;
+            list-style-type: none;
+        }
+        
+        .context li{
+            line-height: 35px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .context li:last-child{
+            border-bottom: none;
+        }
+
+
+    </style>
+    
+    <ul class="context">
+        <li>aaaa</li>
+        <li>bbbb</li>
+        <li>cccc</li>
+    </ul>
+ -->
+    <!-- <script>
+
+    /*  link.onclick = function(ev){
+            // 返回一个false，相当于结束后面即将执行的步骤
+            return false;
+        } 
+
+        link.onclick = function(ev){
+            ev.preventDefault();
+        } */
+    
+    
+        let context = document.querySelector('.context'); 
+        window.addEventListener('contextmenu',function(ev){
+            ev.preventDefault();
+            // console.log(ev);
+            context.style.display = 'block';
+            context.style.top = ev.clientY+'px';
+            context.style.left = ev.clientX+'px';
+        })
+    
+    </script> -->
+
+
+    <input type="text" id="cardInp">
+    <script>
+        // 键盘事件对象
+        // code & key： 存储的是按键,code更细致
+        // keyCode & which: 存储的是键盘按键对应的码值
+        //    方向键: 37 38 39 40 => Left Up Right Down
+        //    空格space：32
+        //    回车enter：13
+        //    回退back：8
+        //    删除delete: 46
+        //    shift：16
+        //    ctrl：17
+        //    alt：18
+        //      。。。
+
+
+        // 键盘按下和键盘抬起都执行同一个方法
+        cardInp.onkeydown = cardInp.onkeyup = function(ev){
+            let val = this.value; // 获取文本框里的内容
+            let reg = /[^0-9X]/;
+            // 输入非数字和非X的字符都删除
+            this.value = val.replace(reg,'');
+            let ary = [37,39,13,8,46];
+            // 超过18位的禁止输入(删除回退除外)
+            if(this.value.length > 18){
+                if(!ary.includes(ev.keyCode))
+                return false; 
+            }
+
+            // console.log(ev);
+
+            // 按enter键弹出输入内容
+            if(ev.keyCode === 13){
+                alert(this.value);   
+            }
+        }
+    </script>
+</body>
+</html>

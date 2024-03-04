@@ -1,0 +1,105 @@
+.container{
+    width: 1100px;
+    height: 397px;
+    margin: 20px auto;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.container .wrapper{
+    width: 1100px;
+    height: 397px;
+    position: relative;
+}
+
+.container .wrapper .slide{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    opacity: 0;
+}
+
+.container .wrapper .slide:first-child{
+    z-index: 1;
+    opacity: 1;
+}
+
+.container .wrapper .slide img{
+    width: 100%;
+    height: 100%;
+}
+
+/* 分页器样式 */
+.container .pagination{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 88;
+}
+
+.container .pagination span{
+    /* 既想在同一行展示，也想设置宽高 */
+    display: inline-block; 
+    margin: 0 4px;
+    width: 6px;
+    height: 6px;
+    background-color: rgba(0,0,0,.4);
+    border: 2px solid rgba(255,255,255,.4);
+    border-radius: 50%;
+    font-size: 0;
+}
+
+.container .pagination span:hover{
+    cursor: pointer;
+}
+
+.container .pagination span.active{
+    background-color: rgba(180, 173, 173, 0.651);
+}
+
+
+/* 设置左右按钮 */
+.container .button-prev,
+.container .button-next{
+ 
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    z-index: 900;
+            font-size: 70px;
+            font-weight: bolder;
+            color: lavender;
+            background-color: rgba(133, 127, 127, 0.541);
+            text-align: center;
+            line-height: 50px;
+            display: none;
+}
+
+
+.button-prev{
+    transform: translateY(50%);
+    bottom: 50%;
+}
+
+.button-next{
+    transform: translateY(50%);
+    bottom: 50%;
+    right:0;
+}
+
+
+
+.changeRight{
+    transform: translateY(50%);
+    bottom: 50%;
+    right:0;
+}
+
+.container:hover .button-prev,
+.container:hover .button-next{
+    display: inline-block;
+    
+}
+
